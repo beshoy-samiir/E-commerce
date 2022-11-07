@@ -1,0 +1,13 @@
+1-*DONE* admin controller login will check again with andrew 
+2-*DONE* token contain user role ( admin / user / superAdmin) 
+3-*Done* forgot Password #6 -> ***(Need test  in front )
+4-*DONE* sub category #1 
+5-*DONE* don't return private products in user #2   -----------> Two dif Apis one for user one for admin // 
+6- check on quantaty of product every time to update it to out of stock #3
+7- discount code -> not now
+8- change price accourding to country -> less priorty
+9- *DONE*  before and after price in database #4  
+10-*DONE*  discount work #5  
+11- upload image 
+12- reset password
+
