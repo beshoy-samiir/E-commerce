@@ -8,7 +8,7 @@ const order = require("../Controller/User/Order.controller");
 const Return = require("../Controller/User/Return.Controller");
 const shippingFees = require("../Controller/Admin/Shipping.controller");
 
-const { route } = require("./Admin.routes");
+const { route } = require("./admin.routes");
 const AdminProudectController = require("../Controller/Admin/Products.Controller");
 const AdminCategoryController = require("../Controller/Admin/Category.model");
 router.post(
