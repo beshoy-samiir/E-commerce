@@ -12,7 +12,7 @@ app.set("view engine", "hbs");
 
 const userRoute = require("../routes/user.routes");
 app.use("/api/user", userRoute);
-const AdminRoutes = require("../routes/Admin.Routes");
+const AdminRoutes = require("../routes/Admin.routes");
 app.use("/api/Admin", AdminRoutes);
 const SuperAdminRoutes = require("../routes/SuperAdmin.routes");
 
