@@ -10,7 +10,7 @@ require("../Models/Connection/databaseConnection");
 
 app.set("view engine", "hbs");
 
-const AdminRoutes = require("../routes/admin.routes");
+const AdminRoutes = require("./routes/admin.routes");
 app.use("/api/Admin", AdminRoutes);
 
 const userRoute = require("../routes/user.routes");
