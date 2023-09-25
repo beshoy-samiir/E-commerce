@@ -9,7 +9,7 @@ class User {
     try {
       //const userOTP = otp(6);
       const userData = new userModel(req.body);
-      if (userData.userRole != "User") throw new Error("INVALID USERROLE");
+     if (userData.userRole != "User") throw new Error("INVALID USERROLE");
       //userData.otp = userOTP;
       let token = await userData.generateToken();
       await userData.save();
@@ -18,7 +18,7 @@ class User {
         userRole: userData.userRole,
       });
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         data: e.message,
         message: "error adding user",
@@ -35,7 +35,7 @@ class User {
         data: req.user,
       });
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
       });
     }
@@ -53,13 +53,14 @@ class User {
         userRole: userData.userRole,
       });
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         data: e.message,
         message: "failed",
       });
     }
   };
+  //error 
   static singleUser = async (req, res) => {
     let country = await shippingFees.findOne({ Country: req.user.country });
     console.log(req.user.name);
@@ -87,7 +88,7 @@ class User {
       await req.user.save();
       res.send("logged out");
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         data: e.message,
         message: "failed loggout ",
@@ -100,7 +101,7 @@ class User {
       const user = await userModel.deleteOne({ id: req.params.id });
       res.send("Account Deleted");
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         data: e.message,
         message: "error deleting user",
@@ -125,7 +126,7 @@ class User {
         message: "updates",
       });
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         message: e.message,
       });
@@ -137,7 +138,7 @@ class User {
       let products = await productModel.find({ showStatus: "public" });
       res.status(201).send(products);
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         message: e.message,
       });
@@ -148,7 +149,7 @@ class User {
       let product = await productModel.findOne({ _id: req.params.id });
       res.status(201).send(product);
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         message: e.message,
       });
@@ -159,7 +160,7 @@ class User {
       let products = await productModel.find().sort("priceAfterDecount");
       res.status(201).send(products);
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         message: e.message,
       });
@@ -170,7 +171,7 @@ class User {
       let products = await productModel.find().sort({ priceAfterDecount: -1 });
       res.status(201).send(products);
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         message: e.message,
       });
@@ -184,7 +185,7 @@ class User {
       });
       res.status(201).send(products);
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         message: e.message,
       });
@@ -199,7 +200,7 @@ class User {
       });
       res.status(201).send(products);
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         message: e.message,
       });

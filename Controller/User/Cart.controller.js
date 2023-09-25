@@ -1,9 +1,5 @@
-const userModel = require("../../Models/User.model");
 const productModel = require("../../Models/Product.model");
-const orderModel = require("../../Models/Order.model");
 const cartModel = require("../../Models/Cart.model");
-const favModel = require("../../Models/favourite.model");
-const Product = require("../../Models/Product.model");
 class BuyProduct {
   static creatNewCart = async (userId, cart) => {
     if (!cart) {
@@ -51,10 +47,7 @@ class BuyProduct {
             (p) => p.productId == item.productId
           );
           // If product is already on cart, update its quantity
-          /* if(product.quantity==0){
-            product.Status="Out of Stock"
-            await product.save()
-          }else {*/ if (item.quantity > product.quantity) {
+           if (item.quantity > product.quantity) {
             item.quantity = product.quantity;
           }
           if (itemIndex > -1) {
@@ -128,7 +121,7 @@ class BuyProduct {
    
       res.send(result[0]);
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apistatus: false,
         message: e.message,
       });
@@ -164,7 +157,7 @@ class BuyProduct {
       await cart.save();
       res.status(200).send();
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apistatus: false,
         message: e.message,
       });

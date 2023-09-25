@@ -15,7 +15,7 @@ const adminAuth = async (req, res, next) => {
     req.token = token;
     next();
   } catch (e) {
-    res.send({
+    res.status(400).send({
       apiStatus: false,
       date: e.message,
       message: "not Authorizated ",

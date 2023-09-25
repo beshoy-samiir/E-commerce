@@ -18,7 +18,7 @@ const auth = async (req, res, next) => {
     }
   
   } catch (e) {
-    res.send({ apiStatus: false, date: e.message, message: "not Authorizated " });
+    res.status(400).send({ apiStatus: false, date: e.message, message: "not Authorizated " });
   }
 };
 

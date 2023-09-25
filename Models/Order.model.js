@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-const { disconnect } = require("process");
-const { stringify } = require("querystring");
-const adress = require("./Adderss");
+
 
 const order = new mongoose.Schema(
   {

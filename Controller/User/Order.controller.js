@@ -173,7 +173,7 @@ class order {
 
       res.send();
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         data: e.message,
       });
@@ -189,7 +189,7 @@ class order {
       );
       res.status(200).send(fees.toString());
     } catch (error) {
-      res.send({
+      res.status(400).send({
         apistatus: false,
         message: error.message,
       });
@@ -205,7 +205,7 @@ class order {
       }
       res.send({ price: price.price });
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apistatus: false,
         message: e.message,
       });
@@ -245,7 +245,7 @@ class order {
 
       res.send(Order);
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apistatus: false,
         message: e.message,
       });
@@ -270,7 +270,7 @@ class order {
 
       res.send(Order);
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apistatus: false,
         message: e.message,
       });
@@ -284,7 +284,7 @@ class order {
       });
       res.send(order);
     } catch (error) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         message: error.message,
       });
@@ -310,7 +310,7 @@ class order {
       });
       res.send(products);
     } catch (error) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         message: error.message,
       });

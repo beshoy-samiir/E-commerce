@@ -1,6 +1,5 @@
 const shippingFees = require("../../Models/shippingFees.Models");
 const { Country, State, City } = require("country-state-city");
-const { none } = require("../../middleware/uploadImage");
 
 class shipping {
   static GetAllCities = async (req, res) => {

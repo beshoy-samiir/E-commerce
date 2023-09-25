@@ -7,7 +7,6 @@ const AdminController = require("../Controller/Admin/Admin.controller");
 const userController = require("../Controller/User/user.controller")
 const shippingFees = require("../Controller/Admin/Shipping.controller");
 const transactions = require("../Controller/Admin/transactions.controller");
-const blockedUsers = require("../Controller/Admin/Blocking.controller");
 //////////////////////////// Admin ///////////////////////////////////
 router.post('/login',userController.login)
 router.post("/AddAdmin", SuperAdminAuth, superAdminController.addAdmin);
@@ -19,8 +18,7 @@ router.post(
 
 router.get("/AllAdmins", SuperAdminAuth, superAdminController.getALLAdmin);
 /////////////////////////// Blocking User ////////////////////////////////////
-router.post("/block/:id", SuperAdminAuth, blockedUsers.blockUser);
-router.get("/getblockUsers", SuperAdminAuth, blockedUsers.getALlBlockedUsers);
+
 ///////////////////////// shiping ///////////////////////////////////////////
 router.post("/getcities", SuperAdminAuth, shippingFees.GetAllCities);
 router.get("/getCountries", shippingFees.GetCountries);

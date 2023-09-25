@@ -13,14 +13,14 @@ const adminAuth = async (req, res, next) => {
     if (user.userRole == "admin" || user.userRole == "SuperAdmin") {
   req.user = user;
     req.token = token;
-    next(); }
+    next();
+   }
     else{
-               throw new Error("not admin or supper admin");
-
+         throw new Error("not admin or supper admin");
     }
     
   } catch (e) {
-    res.send({
+    res.status(400).send({
       apiStatus: false,
       date: e.message,
       message: "not Authorizated ",

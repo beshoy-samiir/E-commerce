@@ -18,7 +18,7 @@ class transactions {
      
         res.status(200).send(orders)
     } catch (error) {
-        res.send({
+        res.status(400).send({
             apiStatus: false,
         message: error.message,
         })
@@ -26,7 +26,7 @@ class transactions {
  }
  static changeTransactionstatus = async(req, res)=>{
     try {
-        const transaction = await order.findByIdAndUpdate(req.params.id,{
+        const transaction = await order.findByIdAndUpdate(req.body.id,{
             status:req.body.status,
            
           }, {
@@ -34,7 +34,7 @@ class transactions {
           })
           res.send(transaction)
     } catch (error) {
-      res.send(error.message)
+      res.status(400).send(error.message)
     }
   }
  static getDeliverdOrders = async(req, res)=>{
@@ -50,7 +50,7 @@ class transactions {
         }
         res.status(200).send(AllDelivedTransactions)
     } catch (error) {
-        res.send({
+        res.status(400).send({
             apiStatus: false,
         message: error.message,
         })

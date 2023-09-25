@@ -1,5 +1,4 @@
 const productModel = require("../../Models/Product.model");
-const fs = require("fs");
 const categoryModel = require("../../Models/Category.model");
 
 class Product {
@@ -16,38 +15,13 @@ class Product {
       if (req.body.subCategory) {
         product.subCategory = req.body.subCategory;
       }
-
       await product.save();
       res.status(200).send(product);
     } catch (e) {
       res.status(400).send(e.message);
     }
   };
-  static uploadProductImages = async (req, res) => {
-    try {
-      let paths =[]
-      let product = await productModel.findOne({ _id: req.params.id });
-      req.files.forEach((element) => {
-        let path = element.path;
-        console.log(element.path)
-        paths.push(`http://localhost:4000/${element.path}`)
-        product.images.push({ image: path });
-      });
 
-      await product.save();
-      
-        res.json({
-          success: 1,
-          profile_url: paths
-      })
- 
-    } catch (e) {
-      res.send({
-        apiStatus: false,
-        data: e.message,
-      });
-    }
-  };
 
   static updateProduct = async (req, res) => {
     try {
@@ -83,7 +57,7 @@ class Product {
       });
       res.send(product);
     } catch (error) {
-      res.send(error.message);
+      res.status(400).send(error.message);
     }
   };
 
@@ -105,42 +79,10 @@ class Product {
 
       res.send(product);
     } catch (error) {
-      res.send(error.message);
+      res.status(400).send(error.message);
     }
   };
-  static getAllImagesOfProduct = async (req, res) => {
-    try {
-      const product = await productModel.findById(req.params.id);
 
-      res.send(product.images);
-    } catch (error) {
-      res.send(error.message);
-    }
-  };
-  static deleteImage = async (req, res) => {
-    try {
-      const product = await productModel.findById(req.params.id);
-      await fs.unlink(req.body.ImageURL, function (err) {
-        if (err) {
-          throw new Error(err);
-        }
-      });
-      let index = 0;
-      product.images.forEach(async (element) => {
-        console.log(element.image);
-        console.log(req.body.ImageURL);
-
-        if (element.image == req.body.ImageURL) {
-          await product.images.pop(index);
-          await product.save();
-        }
-        index = +1;
-      });
-      res.send(product);
-    } catch (error) {
-      res.send(error.message);
-    }
-  };
 }
 
 module.exports = Product;

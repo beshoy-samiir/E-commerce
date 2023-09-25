@@ -19,7 +19,7 @@ class User {
         
       });
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         data: e.message,
         message: "failed",

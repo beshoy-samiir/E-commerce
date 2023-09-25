@@ -14,7 +14,7 @@ class SuperAdmin {
       await userData.save();
       res.send("added");
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         data: e.message,
         message: "error adding Admin ",
@@ -28,7 +28,7 @@ class SuperAdmin {
 
       res.send(allusers);
     } catch (error) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         data: error.message,
         message: "error showing Admin ",
@@ -46,7 +46,7 @@ class SuperAdmin {
       user.save();
       res.send("Blocked");
     } catch (error) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         data: error.message,
         message: "error Blcoking User ",
@@ -69,7 +69,7 @@ class SuperAdmin {
         "Updated"
       );
     } catch (e) {
-      res.send({
+      res.status(400).send({
         apiStatus: false,
         message: e.message,
       });
@@ -84,7 +84,7 @@ class SuperAdmin {
         res.send("added")
       } catch (error) {
         
-          res.send({
+          res.status(400).send({
             apiStatus: false,
             data: error.message,
             message: "error showing Admin ",
